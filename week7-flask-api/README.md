@@ -2,7 +2,7 @@
 A multi stage docker build reducing the image size by 86.5% using Docker, python, and Flask. The multi stage docker build is written in a docker file, which docker uses to build a python and Flask REST API image that runs an application. The application has three endpoints: /health, returns 200 OK and a Health message if the container is alive, POST /user, creates a user or returns 409 if a users email already exists, and  DELETE /user/user_id, deletes a user or returns 404 if the user_id is not found.
  
 ## How to run it
-To run image use 'docker run -d -p 5000:5000 aaimarjprojects/flask-api:v2'
+To run image use `docker run -d -p 5000:5000 aaimarjprojects/flask-api:v2`
 
 ### Flags Explained
 - -d runs the container in the background so that it does not take up space in my terminal.
@@ -12,17 +12,17 @@ To run image use 'docker run -d -p 5000:5000 aaimarjprojects/flask-api:v2'
 I used curl which is a tool that sends http requests. Flags used were -i which shows the response header, -X which specifies the http method, -H which sets the http header and tells Flask the body is json, and -d for the data sent in the request.
 
 ### Health Check
-curl -i http://<host_ip_address>:5000/health
+`curl -i http://<host_ip_address>:5000/health`
 
 Expected response: 200 OK and Health message
 
 ### Create User
-curl -i -X POST -H "Content-Type: application/json" -d '{"name": "<enter_name_here>", "age": <enter_age_here>, "sex": "<enter_sex_here>", "email": <"enter_email_here">}' http://<host_ip_address>:5000/user
+`curl -i -X POST -H "Content-Type: application/json" -d '{"name": "<enter_name_here>", "age": <enter_age_here>, "sex": "<enter_sex_here>", "email": <"enter_email_here">}' http://<host_ip_address>:5000/user `
 
 Expected response: 200 OK and User created message
 
 ### Delete User
-curl -i -X DELETE http://<host_ip_address>:5000/user/user_id
+`curl -i -X DELETE http://<host_ip_address>:5000/user/user_id`
  
  Expected response: 200 Ok and User deleted message 
 
